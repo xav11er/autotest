@@ -1,0 +1,18 @@
+{"dst":"565","src":"lte","cmd":"ack","seq":"4729"}
+{"dst":"565","src":"lte","cmd":"ack","seq":"4729"}
+{"dst":"565","src":"916","cmd":"time","time":"2022-02-10 01:00:42.559","seq":"4729"}
+{"dst":"565","src":"lte","cmd":"ack"," time ":"2021-12-09 08:30:00.123","seq":"4729"}
+{"dst":"565","src":"lte","cmd":"ack","seq":"4729"}
+{"staName":"人民广场站","dst":"565","src":"916","assignName ":"正线调度","cmd":"locationinfo","staNum":"locationinfo","dir":"up","seq":"4729","assign":"00"}
+{"mode":"emg","dst":"565","src":"lte","ident":"1301","cmd":"ack","stanum":"3","drvnum":"0099","seq":"4729","carnum":"1021"}
+{"mode":"emg","dst":"916","src":"565","ident":"1301","cmd":"rtt","stanum":"3","drvnum":"0099","seq":"4729","carnum":"1021"}
+{"dst":"565","src":"lte","cmd":"ack","dir":"up","seq":"4729","trainnum":"2233","assign":"00"}
+{"dst":"916","src":"565","cmd":"attach","dir":"up","seq":"4729","trainnum":"2233","assign":"00"}
+{"SDS":"司机确认","dst":"565","src":"lte","ident":"1401","cmd":"ack","seq":"4729"}
+{"SDS":"司机确认","dst":"916","src":"565","ident":"1401","cmd":"msg","seq":"4729"}
+{"senderName":"行调1","sds":"注意瞭望","dst":"565","src":"lte","sender":"190001","ident":"1601","cmd":"ack","type":"4","seq":"4729"}
+{"senderName":"行调1","sds":"注意瞭望","dst":"916","src":"565","sender":"190001","ident":"1601","cmd":"msg","type":"4","seq":"4729"}
+{"cpatg":"1601","dst":"565","src":"lte","cmd":"ack","seq":"4729"}
+{"summary":"ok","mmisum":"FF","dst":"565","src":"lte","hostver":"host_V1.0","handset":"FF","cmd":"ack","mmiver":"mmi_V1.0","type":"powerup","seq":"4729","hostsum":"FF"}
+{"drvmode":"fao","role":"11","dst":"565","src":"lte","truip":"10.11.12.123","cmd":"ack","paploc":"0000000000000000","seq":"4729","reqloc":"0000000000000000"}
+{"drvmode":"fao","role":"11","dst":"916","src":"565","truip":"10.11.12.123","cmd":"pap","paploc":"0000000000000000","seq":"4729","reqloc":"0000000000000000"}
