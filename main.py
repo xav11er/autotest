@@ -48,9 +48,9 @@ input_test_message_list = [{"seq": seq, "src": src, "dst": dst, "cmd": "heartbea
                             "paploc": "0000000000000000", "drvmode": "fao", "truip": "10.11.12.123", "role": "11"}
                            # 乘客对讲控制
                            ]
-for dic in input_test_message_list:  # 遍历列表，发送列表中的测试信息，列表中有n段测试信息就改成range（n）
+for dic in input_test_message_list:  # 遍历列表，发送列表中的测试信息
 
-    input_test_message.send_keys(f'{dic}')  # 通过列表下标发送指定的测试信息
+    input_test_message.send_keys(f'{dic}')  # 将dic转化为字符串再进行发送
     button_send_message.click()  # 点击发送测试信息按钮
     input_test_message.clear()  # 清空测试信息栏，以便发送下一条测试信息
 
