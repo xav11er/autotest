@@ -204,10 +204,12 @@ print(output.text)
 # time.sleep(1)
 #
 #
-# f = open('test.docx', 'w')
-# output_results = driver.find_elements(By.XPATH, '//*[@id="output"]/div/span[2]')  # 获取服务器回应的信息的文本内容
+f = open('test.docx', 'w')
+f.write(output.text)
+
+# output_results = driver.find_elements(By.ID, 'output')  # 获取服务器回应的信息的文本内容
 # for output_result in output_results:
 #     print(output_result.text)
 #     f.write(f'{output_result.text}'+'\n')
-#
-# f.close()
+
+f.close()
