@@ -39,7 +39,7 @@ class CadDriver(object):
         """
         初始化
         """
-        global driver
+        global driver  # 让浏览器窗口不自动关闭
         self.driver = webdriver.Chrome()
         self.driver.get(self.test_host_url)
 
@@ -53,6 +53,7 @@ class CadDriver(object):
                                                             '/html/body/div/div/div/div/div/div/form/div/span/button')  # 发送信息按钮
         self.button_web_link = self.driver.find_element(By.CLASS_NAME, 'btn,btn-success')  # websocket连接按钮
         self.output = self.driver.find_element(By.ID, 'output')  # 输出结果
+        print(type(self.output))
 
     def link(self, url):
         """
@@ -74,9 +75,12 @@ class CadDriver(object):
         """
         获取每次返回的结果
         """
+        print(type(self.output))
+        print(self.output.text)
+        # print(self.output)
 
-        pass
-
+# test0 = CadDriver('aaa')
+# test0.get_data()
 
 class TestCall(object):
     def __init__(self):
@@ -175,8 +179,11 @@ class TestCall(object):
                 "paploc": "0000000000000000", "drvmode": "fao", "truip": "10.11.12.123", "role": "11"}
         self.cadDriver.send_message(dic1)
         time.sleep(0.2)
+    def get_output(self):
+        self.cadDriver.get_data()
 def testall():
     test1 = TestCall()
+    output = TestCall()
     test1.test_init()
     test1.link()
     test1.xin_tiao()
@@ -190,10 +197,13 @@ def testall():
     test1.guang_bo_kong_zhi()
     test1.zi_jian_xin_xi()
     test1.cheng_ke_dui_jiang()
-    # time.sleep(3)
+    time.sleep(3)
+    test1.get_output()  # 获取输出结果
 
 if __name__ == '__main__':
     testall()
+    # time.sleep(3)
+
 
 # test1 = Test()
 # test1.link()

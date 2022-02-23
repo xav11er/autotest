@@ -166,6 +166,7 @@ test1.cheng_ke_dui_jiang()
 
 time.sleep(1)
 print(output.text)
+print(type(output))
 
 # input_test_message_list = [{"seq": seq, "src": src, "dst": dst, "cmd": "heartbeat", },  # 心跳信息测试
 #                            {"seq": seq, "src": src, "dst": dst, "cmd": "synctime", },  # 时钟核验测试
