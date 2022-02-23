@@ -39,6 +39,7 @@ class CadDriver(object):
         """
         初始化
         """
+        global driver
         self.driver = webdriver.Chrome()
         self.driver.get(self.test_host_url)
 
@@ -57,6 +58,7 @@ class CadDriver(object):
         """
         ws://221.178.225.58:9906/WebSocket'
         """
+
         self.input_address.send_keys(url)  # 输入服务器地址
         self.button_web_link.click()  # 点击连接按钮
 
@@ -72,6 +74,7 @@ class CadDriver(object):
         """
         获取每次返回的结果
         """
+
         pass
 
 
@@ -107,84 +110,90 @@ class TestCall(object):
         # button_send_message.click()  # 点击发送测试信息按钮
         # input_test_message.clear()  # 清空测试信息栏，以便发送下一条测试信息
         time.sleep(0.2)
-    #
-    # def zhu_dong_xia_fa_cad(self):  # 调度台CAD主动下发当前时间
-    #     dic3 = {"seq": seq, "src": src, "dst": dst, "cmd": "time",
-    #             " time ": "2021-12-09 08:30:00.123"}
-    #     input_test_message.send_keys(str(dic3))  #
-    #     button_send_message.click()  # 点击发送测试信息按钮
-    #     input_test_message.clear()  # 清空测试信息栏，以便发送下一条测试信息
-    #     time.sleep(0.2)
-    #
-    # def zhu_dong_fa_song_chezai(self):  # 车载台主动发送位置请求给CAD
-    #     dic4 = {"seq": seq, "src": src, "dst": dst, "cmd": "querylocation", }
-    #     input_test_message.send_keys(str(dic4))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def hu_jiao_shen_qing(self):  # 呼叫申请
-    #     dic5 = {"seq": seq, "src": src, "dst": dst, "cmd": "rtt", "mode": "emg", "ident": "1301",
-    #             "stanum": "3", "carnum": "1021", "drvnum": "0099"}
-    #     input_test_message.send_keys(str(dic5))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def qing_qiu_gui_shu(self):  # 请求归属
-    #     dic6 = {"seq": seq, "src": src, "dst": dst, "cmd": "attach", "assign": "00",
-    #             "dir": "up", "trainnum": "2233"}
-    #     input_test_message.send_keys(str(dic6))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def yu_zhi_duao_xiao_xi(self):  # 发送预制短消息
-    #     dic7 = {"seq": seq, "src": src, "dst": dst, "cmd": "msg", "ident": "1401", "SDS": "司机确认"}
-    #     input_test_message.send_keys(str(dic7))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def dian_zi_gong_dan(self):  # 短消息及电子工单
-    #     dic8 = {"seq": seq, "src": src, "dst": dst, "cmd": "msg", "ident": "1601",
-    #             "sender": "190001", "senderName": "行调1", "type": "4", "sds": "注意瞭望"}
-    #     input_test_message.send_keys(str(dic8))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def guang_bo_kong_zhi(self):  # 广播控制
-    #     dic9 = {"seq": seq, "src": src, "dst": dst, "cmd": " startCPA ", "cpatg": "1601"}
-    #     input_test_message.send_keys(str(dic9))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def zi_jian_xin_xi(self):  # 自检信息
-    #     dic10 = {"seq": seq, "src": src, "dst": dst, "cmd": "selftest", "type": "powerup",
-    #              "mmiver": "mmi_V1.0", "hostver": "host_V1.0", "summary": "ok", "mmisum": "FF",
-    #              "hostsum": "FF", "handset": "FF"}
-    #     input_test_message.send_keys(str(dic10))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
-    #
-    # def cheng_ke_dui_jiang(self):  # 乘客对讲控制
-    #     dic11 = {"seq": seq, "src": src, "dst": dst, "cmd": "pap", "reqloc": "0000000000000000",
-    #              "paploc": "0000000000000000", "drvmode": "fao", "truip": "10.11.12.123", "role": "11"}
-    #     input_test_message.send_keys(str(dic11))
-    #     button_send_message.click()
-    #     input_test_message.clear()
-    #     time.sleep(0.2)
 
+    def zhu_dong_xia_fa_cad(self):  # 调度台CAD主动下发当前时间
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "time",
+                " time ": "2021-12-09 08:30:00.123"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
 
-if __name__ == '__main__':
+    def zhu_dong_fa_song_chezai(self):  # 车载台主动发送位置请求给CAD
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "querylocation", }
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def hu_jiao_shen_qing(self):  # 呼叫申请
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "rtt", "mode": "emg",
+                "ident": "1301",
+                "stanum": "3", "carnum": "1021", "drvnum": "0099"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def qing_qiu_gui_shu(self):  # 请求归属
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "attach", "assign": "00",
+                "dir": "up", "trainnum": "2233"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def yu_zhi_duao_xiao_xi(self):  # 发送预制短消息
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "msg", "ident": "1401",
+                "SDS": "司机确认"}
+        self.cadDriver.send_message(dic1)
+
+    def dian_zi_gong_dan(self):  # 短消息及电子工单
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "msg", "ident": "1601",
+                "sender": "190001", "senderName": "行调1", "type": "4", "sds": "注意瞭望"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def guang_bo_kong_zhi(self):  # 广播控制
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": " startCPA ",
+                "cpatg": "1601"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def zi_jian_xin_xi(self):  # 自检信息
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "selftest",
+                "type": "powerup",
+                "mmiver": "mmi_V1.0", "hostver": "host_V1.0", "summary": "ok", "mmisum": "FF",
+                "hostsum": "FF", "handset": "FF"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+
+    def cheng_ke_dui_jiang(self):  # 乘客对讲控制
+        random_data = self.tools.get_random_seq()
+        dic1 = {"seq": random_data[0], "src": random_data[1], "dst": random_data[2], "cmd": "pap",
+                "reqloc": "0000000000000000",
+                "paploc": "0000000000000000", "drvmode": "fao", "truip": "10.11.12.123", "role": "11"}
+        self.cadDriver.send_message(dic1)
+        time.sleep(0.2)
+def testall():
     test1 = TestCall()
     test1.test_init()
     test1.link()
     test1.xin_tiao()
     test1.shi_zhong_he_yan()
+    test1.zhu_dong_xia_fa_cad()
+    test1.zhu_dong_fa_song_chezai()
+    test1.hu_jiao_shen_qing()
+    test1.qing_qiu_gui_shu()
+    test1.yu_zhi_duao_xiao_xi()
+    test1.dian_zi_gong_dan()
+    test1.guang_bo_kong_zhi()
+    test1.zi_jian_xin_xi()
+    test1.cheng_ke_dui_jiang()
+    # time.sleep(3)
+
+if __name__ == '__main__':
+    testall()
 
 # test1 = Test()
 # test1.link()
