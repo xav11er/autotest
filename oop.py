@@ -183,7 +183,7 @@ class TestCall(object):
         self.cadDriver.get_data()
 def testall():
     test1 = TestCall()
-    output = TestCall()
+
     test1.test_init()
     test1.link()
     test1.xin_tiao()
@@ -202,6 +202,7 @@ def testall():
 
 if __name__ == '__main__':
     testall()
+
     # time.sleep(3)
 
 
